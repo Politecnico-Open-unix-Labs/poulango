@@ -21,16 +21,18 @@ def main(request):
         token = request.POST.get("token")
         id = request.POST.get("id")
         if token and id:
-            if valid(id, token):
-                posizione = Posizione.objects.get(pk=id)
-                if posizione:
+            posizione = Posizione.objects.get(pk=id)
+            if posizione:
+               if valid(id, token):
                     posizione.ultima_visita = timezone.now()
                     posizione.fatto = True
                     posizione.save()
                     info(request, "Grazie del tuo aiuto!")
-                else:
-                    return HttpResponse("Dai gattuso, basta...", content_type="text/plain")
+               else:
+                    info(request, "Token non valido :(")
             else:
-                info(request, "Token non valido :(")
+                return HttpResponse("Dai gattuso, basta...", content_type="text/plain", status=401)
+        else:
+            info(request, "Mancano dei pezzi...")
 
     return render(request, "main.html",  {"posizioni": Posizione.objects.all()})
