@@ -18,9 +18,8 @@
             map.addMarker({
                 lat: {{posizione.latitudine|stringformat:"f"}},
                 lng: {{posizione.longitudine|stringformat:"f"}},
-                title: "{{posizione.descrizione}}",
                 infoWindow: {
-                    content: "<p><form method='POST' action='.'>{% csrf_token %}<input type='text' name='token' placeholder='Token'/><input type='hidden' name='id' value='{{posizione.id}}'/><input type='submit' value='Fatto!'/></form></p>"
+                    content: "<div class='desc'>{{posizione.descrizione}}</div><form method='POST' action='.'>{% csrf_token %}<input type='text' name='token' placeholder='Token'/><input type='hidden' name='id' value='{{posizione.id}}'/><input type='submit' value='Fatto!'/></form>"
                 }
             });
             {% endfor %}
@@ -33,6 +32,10 @@
     #map {
         position:absolute;
         top: 0; bottom: 0; left: 0; right: 0;
+    }
+
+    .desc {
+        margin-bottom: 1em;
     }
     </style>
 </head>
