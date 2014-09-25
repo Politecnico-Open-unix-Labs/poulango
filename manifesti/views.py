@@ -1,4 +1,4 @@
-from manifesti.token import secure_compare, calculate_token
+from manifesti.token import secure_compare
 from models import Posizione
 
 from django.http import HttpResponse
@@ -14,16 +14,13 @@ def info(request, text):
 
 def main(request):
     """Handler della pagina"""
-    def valid(id, token):
-        return secure_compare(calculate_token(id), token)
-
     if request.method == "POST":
         token = request.POST.get("token")
         id = request.POST.get("id")
         if token and id:
             posizione = Posizione.objects.get(pk=id)
             if posizione:
-               if valid(id, token):
+               if secure_compare(posizione.token(), token):
                     posizione.ultima_visita = timezone.now()
                     posizione.fatto = True
                     posizione.save()
