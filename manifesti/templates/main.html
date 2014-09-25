@@ -19,14 +19,14 @@
                 lat: {{posizione.latitudine|stringformat:"f"}},
                 lng: {{posizione.longitudine|stringformat:"f"}},
                 infoWindow: {
-                    content: "<div class='desc'>{{posizione.descrizione}}</div><form method='POST' action='.'>{% csrf_token %}<input type='text' name='token' placeholder='Token'/><input type='hidden' name='id' value='{{posizione.id}}'/><input type='submit' value='Fatto!'/></form>"
+                    content: document.getElementById("desc-{{posizione.id}}")
                 }
             });
             {% endfor %}
+            {% for message in messages %}
+                alert("{{message}}");
+            {% endfor %}
         });
-        {% for message in messages %}
-            alert("{{message}}");
-        {% endfor %}
     </script>
     <style type="text/css" media="screen">
     #map {
@@ -36,11 +36,29 @@
 
     .desc {
         margin-bottom: 1em;
+        width: 20em;
+    }
+
+    .desc > hr {
+        visibility: hidden;
     }
     </style>
 </head>
 <body>
     <p>Loading...</p>
     <div id="map"></div>
+
+    {% for posizione in posizioni %}
+    <div class="desc" id='desc-{{posizione.id}}'>
+        <div>{{posizione.descrizione}}</div>
+        <hr/>
+        <form method='POST' action='.'>
+            {% csrf_token %}
+            <input type='text' name='token' placeholder='Token'/>
+            <input type='hidden' name='id' value='{{posizione.id}}'/>
+            <input type='submit' value='Fatto!'/>
+        </form>
+    </div>
+    {% endfor %}
 </body>
 </html>
