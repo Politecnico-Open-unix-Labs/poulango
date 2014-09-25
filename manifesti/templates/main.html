@@ -18,11 +18,13 @@
             map.addMarker({
                 lat: {{posizione.latitudine|stringformat:"f"}},
                 lng: {{posizione.longitudine|stringformat:"f"}},
+                icon: {% if posizione.fatto %} "/static/si.png" {% else %} "/static/no.png" {% endif %},
                 infoWindow: {
                     content: document.getElementById("desc-{{posizione.id}}")
                 }
             });
             {% endfor %}
+            $("#segnalini").css("display", "none")
             {% for message in messages %}
                 alert("{{message}}");
             {% endfor %}
@@ -45,20 +47,20 @@
     </style>
 </head>
 <body>
-    <p>Loading...</p>
     <div id="map"></div>
-
-    {% for posizione in posizioni %}
-    <div class="desc" id='desc-{{posizione.id}}'>
-        <div>{{posizione.descrizione}}</div>
-        <hr/>
-        <form method='POST' action='.'>
-            {% csrf_token %}
-            <input type='text' name='token' placeholder='Token'/>
-            <input type='hidden' name='id' value='{{posizione.id}}'/>
-            <input type='submit' value='Fatto!'/>
-        </form>
+    <div id="segnalini">
+        {% for posizione in posizioni %}
+        <div class="desc" id='desc-{{posizione.id}}'>
+            <div>{{posizione.descrizione}}</div>
+            <hr/>
+            <form method='POST' action='.'>
+                {% csrf_token %}
+                <input type='text' name='token' placeholder='Token'/>
+                <input type='hidden' name='id' value='{{posizione.id}}'/>
+                <input type='submit' value='Fatto!'/>
+            </form>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </body>
 </html>

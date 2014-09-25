@@ -25,6 +25,7 @@ def main(request):
                 posizione = Posizione.objects.get(pk=id)
                 if posizione:
                     posizione.ultima_visita = timezone.now()
+                    posizione.fatto = True
                     posizione.save()
                     info(request, "Grazie del tuo aiuto!")
                 else:

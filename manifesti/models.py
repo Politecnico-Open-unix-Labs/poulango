@@ -7,6 +7,7 @@ class Posizione(models.Model):
     latitudine = models.DecimalField(max_digits=18, decimal_places=14)
     longitudine = models.DecimalField(max_digits=18, decimal_places=14)
     ultima_visita = models.DateTimeField(null=True, blank=True, editable=False)
+    fatto = models.BooleanField(default=False)
 
     def token(self):
         return calculate_token(self.id)
