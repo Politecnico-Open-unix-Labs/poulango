@@ -13,7 +13,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'manifesti',
-        'USER': 'root',
+        'USER': 'username',
         'PASSWORD': 'password',
         'HOST': '',
         'PORT': '',
@@ -74,8 +74,8 @@ STATICFILES_FINDERS = (
 )
 
 # These two must be extremely random!
-SECRET_KEY = '4meq+r-vl#coy0xqs357-al=8a-f4exrz0%e$7fdi!f(&amp;nhj96'
-HMAC_KEY = "4meq+r-vsijdidwwqidjwqdjwqdal=8a-f4exrzdisjidjwdidsadsadmp;nhj96"
+SECRET_KEY = 'YEAH A BIT MORE RANDOM THAN THIS'
+HMAC_KEY = 'YEAH A BIT MORE RANDOM THAN THIS'
 
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -98,7 +98,7 @@ WSGI_APPLICATION = 'poulango.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
-    "/home/dilbert/Progetti/poulango/templates"
+    "/path/to/poulango/templates"
 )
 
 INSTALLED_APPS = (
