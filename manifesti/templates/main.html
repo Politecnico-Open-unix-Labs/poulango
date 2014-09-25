@@ -26,11 +26,9 @@
             });
             {% endfor %}
         });
-        {% if messages %}
-            {% for message in messages %}
-                alert("{{message}}");
-            {% endfor %}
-        {% endif %}
+        {% for message in messages %}
+            alert("{{message}}");
+        {% endfor %}
     </script>
     <style type="text/css" media="screen">
     #map {

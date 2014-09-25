@@ -1,4 +1,4 @@
-from manifesti.token import less_shitty_compare, calculate_token
+from manifesti.token import secure_compare, calculate_token
 from models import Posizione
 
 from django.http import HttpResponse
@@ -15,7 +15,7 @@ def info(request, text):
 def main(request):
     """Handler della pagina"""
     def valid(id, token):
-        return less_shitty_compare(calculate_token(id), token)
+        return secure_compare(calculate_token(id), token)
 
     if request.method == "POST":
         token = request.POST.get("token")
