@@ -21,3 +21,5 @@ L'applicazione ha 2 pagine:
 
 * `/` è la radice, pubblica
 * `/admin` è la sezione per aggiungere bachece e gestire gli utenti in un futuro (forse lontano).
+
+**AL MOMENTO DELL'INSTALLAZIONE, RIVEDERE E COMPLETARE `poulango/settings.py`**
