@@ -73,9 +73,8 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-# These two must be extremely random!
+# Must be extremely random!
 SECRET_KEY = 'YEAH A BIT MORE RANDOM THAN THIS'
-HMAC_KEY = 'YEAH A BIT MORE RANDOM THAN THIS'
 
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',

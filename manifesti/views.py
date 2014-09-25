@@ -20,7 +20,7 @@ def main(request):
         if token and id:
             posizione = Posizione.objects.get(pk=id)
             if posizione:
-               if secure_compare(posizione.token(), token):
+               if secure_compare(posizione.token, token):
                     posizione.ultima_visita = timezone.now()
                     posizione.fatto = True
                     posizione.save()
