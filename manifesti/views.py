@@ -20,12 +20,15 @@ def main(request):
         if token and id:
             posizione = Posizione.objects.get(pk=id)
             if posizione:
-               if secure_compare(posizione.token, token):
-                    posizione.ultima_visita = timezone.now()
-                    posizione.fatto = True
-                    posizione.save()
-                    info(request, "Grazie del tuo aiuto!")
-               else:
+                if secure_compare(posizione.token, token):
+                    if not posizione.fatto:
+                        posizione.ultima_visita = timezone.now()
+                        posizione.fatto = True
+                        posizione.save()
+                        info(request, "Grazie del tuo aiuto!")
+                    else:
+                        info(request, "Lo hai già fatto! :)")
+                else:
                     info(request, "Token non valido :(")
             else:
                 return HttpResponse("Dai gattuso, basta...", content_type="text/plain", status=401)
