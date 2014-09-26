@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.utils import timezone
 from django.contrib import messages
+from django.views.decorators.cache import never_cache
 
 
 def info(request, text):
@@ -14,6 +15,7 @@ def info(request, text):
     return messages.add_message(request, messages.INFO, text)
 
 
+@never_cache
 def main(request):
     """Handler della pagina"""
     if request.method == "POST":
