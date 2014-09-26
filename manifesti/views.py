@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from manifesti.token import secure_compare
 from models import Posizione
 
