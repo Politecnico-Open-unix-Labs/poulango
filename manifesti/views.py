@@ -34,7 +34,7 @@ def main(request):
                 else:
                     info(request, "Lo hai già fatto! :)")
             else:
-                    info(request, "Token non valido :(")
+                info(request, "Token non valido :(")
         else:
             info(request, "Mancano dei pezzi...")
 
