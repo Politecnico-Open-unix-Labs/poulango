@@ -97,7 +97,7 @@ WSGI_APPLICATION = 'poulango.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
-    "/path/to/poulango/templates"
+    "/path/to/poulango/templates",
 )
 
 INSTALLED_APPS = (
