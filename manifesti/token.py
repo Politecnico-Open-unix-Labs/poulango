@@ -13,5 +13,4 @@ def secure_compare(a, b):
 
 
 def generate_token():
-    return base64.b64encode(os.urandom(20))
-
+    return base64.b64encode(os.urandom(12))
