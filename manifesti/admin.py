@@ -13,7 +13,7 @@ reset_fatto.short_description = "Riporta bacheca a 'non fatto'"
 def set_fatto(modeladmin, request, queryset):
     queryset.update(fatto=True)
 
-reset_fatto.short_description = "Riporta bacheca a 'fatto'"
+set_fatto.short_description = "Riporta bacheca a 'fatto'"
 
 
 def reset_token(modeladmin, request, queryset):
