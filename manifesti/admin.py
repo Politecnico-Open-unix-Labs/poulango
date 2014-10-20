@@ -10,6 +10,12 @@ def reset_fatto(modeladmin, request, queryset):
 reset_fatto.short_description = "Riporta bacheca a 'non fatto'"
 
 
+def set_fatto(modeladmin, request, queryset):
+    queryset.update(fatto=True)
+
+reset_fatto.short_description = "Riporta bacheca a 'fatto'"
+
+
 def reset_token(modeladmin, request, queryset):
     for posizione in queryset:
         posizione.update_token()
@@ -20,6 +26,6 @@ reset_token.short_description = "Genera nuovo token"
 
 class PosizioneAdmin(admin.ModelAdmin):
     list_display = ("descrizione", "fatto", "token", "ultima_visita")
-    actions = (reset_fatto, reset_token)
+    actions = (set_fatto, reset_fatto, reset_token)
 
 admin.site.register(Posizione, PosizioneAdmin)
