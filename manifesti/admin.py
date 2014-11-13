@@ -7,13 +7,13 @@ from manifesti.token import generate_token
 def reset_fatto(modeladmin, request, queryset):
     queryset.update(fatto=False)
 
-reset_fatto.short_description = "Riporta bacheca a 'non fatto'"
+reset_fatto.short_description = "Segna come 'non fatto'"
 
 
 def set_fatto(modeladmin, request, queryset):
     queryset.update(fatto=True)
 
-set_fatto.short_description = "Riporta bacheca a 'fatto'"
+set_fatto.short_description = "Segna come 'fatto'"
 
 
 def reset_token(modeladmin, request, queryset):
